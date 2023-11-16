@@ -22,3 +22,9 @@ app.get("/login", async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
   });
+
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log("Server is running on port " + PORT);
+});
