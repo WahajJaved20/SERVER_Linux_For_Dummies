@@ -10,7 +10,7 @@ app.get("/login", async (req, res) => {
   try {
     const db = mongoose.connection.useDb("Linux_For_Dummies")
     const collection = db.collection('Credentials');
-    const result = await collection.find({}).toArray()
+    const result = await collection.find({}).maxTimeMS(30000).toArray();
     console.log(result[0]);
   
     if (!result) {
