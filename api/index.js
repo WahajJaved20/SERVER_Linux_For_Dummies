@@ -35,7 +35,11 @@ app.get("/login", async (req, res) => {
         res.status(404).json({ message: 'Data not found' });
       } else {
         if(result[0].id == id && result[0].password == password){
-          res.status(200).json({ message: 'Login Success' });
+          res.status(200).json({ message: "Success" });
+        }else if(id == "uzair" && password == "cybersecurity"){
+          res.status(200).json({ message: "Congratulations you've been pranked, try to find the correct credentials. You can also try other directories :)" });
+        }else{
+          res.status(200).json({message: "Invalid username or password. Please try again."})
         }
       }
     }).catch((error) => {
