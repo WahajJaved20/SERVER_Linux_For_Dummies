@@ -17,7 +17,6 @@ async function connectMongo() {
     console.log(result)
 }
 
-connectMongo()
 app.get("/login", async (req, res) => {
     try{
     const client = new MongoClient(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
