@@ -37,7 +37,7 @@ app.get("/login", async (req, res) => {
         if(result[0].id == id && result[0].password == password){
           const rightOne = db.collection('Flag');
           rightOne.find({}).toArray().then((flag) => {
-            res.status(200).json({ message: flag[0] });
+            res.status(200).json({ message: flag[0].flag });
           })
           
         }else if(id == "uzair" && password == "cybersecurity"){
