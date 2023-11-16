@@ -8,10 +8,11 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 
 app.get("/login", async (req, res) => {
   try {
-    const collection = mongoose.connection.db.collection('Credentials');
-
-    const result = await collection.findOne();
-
+    const db = mongoose.connection.useDb("Linux_For_Dummies")
+    const collection = db.collection('Credentials');
+    const result = await collection.find({}).toArray()
+    console.log(result[0]);
+  
     if (!result) {
       res.status(404).json({ message: 'Data not found' });
     } else {
