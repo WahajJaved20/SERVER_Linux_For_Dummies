@@ -37,13 +37,13 @@ app.post("/login", async (req, res) => {
         if(result[0].id == id && result[0].password == password){
           const rightOne = db.collection('Flag');
           rightOne.find({}).toArray().then((flag) => {
-            res.status(200).json({ message: flag[0].flag });
+            res.status(200).json({ message: flag[0].flag, type:"Sucess" });
           })
           
         }else if(id == "uzair" && password == "cybersecurity"){
-          res.status(200).json({ message: "Congratulations you've been pranked, try to find the correct credentials. You can also try other directories :)" });
+          res.status(200).json({ message: "Congratulations you've been pranked, try to find the correct credentials. You can also try other directories :)" , type:"Failed"});
         }else{
-          res.status(200).json({message: "Invalid username or password. Please try again."})
+          res.status(200).json({message: "Invalid username or password. Please try again.", type:"Failed"})
         }
       }
     }).catch((error) => {
