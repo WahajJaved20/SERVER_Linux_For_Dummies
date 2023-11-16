@@ -26,6 +26,7 @@ export default db;
 
 app.get("/login", async (req, res) => {
   try {
+    const {id, password} = req.body;
     const collection = db.collection('Credentials');
     collection.find({}).toArray().then((result) => {
       console.log(result[0]);
@@ -33,7 +34,9 @@ app.get("/login", async (req, res) => {
       if (!result || result.length === 0) {
         res.status(404).json({ message: 'Data not found' });
       } else {
-        res.status(200).json(result);
+        if(result[0].id == id && result[0].password == password){
+          res.status(200).json({ message: 'Login Success' });
+        }
       }
     }).catch((error) => {
       console.error(error);
