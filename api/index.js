@@ -24,7 +24,7 @@ let db = conn.db('Linux_For_Dummies');
 export default db;
 
 
-app.get("/login", async (req, res) => {
+app.post("/login", async (req, res) => {
   try {
     const {id, password} = req.body;
     const collection = db.collection('Credentials');
